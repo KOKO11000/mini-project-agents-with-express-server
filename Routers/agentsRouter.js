@@ -1,34 +1,33 @@
 import express from "express"
 
-import { getAllAgents } from "../AgentsController/agentsCtrl.js"
+import { getAgentById, getAllAgents } from "../AgentsController/agentsCtrl.js"
 import { validateAdmin, validateData } from "../middelware/auth.js"
-import { jsonToArr } from "../fsFiles/fsFunc.js"
+import { jsonToArr, writeFile } from "../fsFiles/fsFunc.js"
 
 const router = express.Router()
+const PATH_AGENGTS_DB ="./data/agents.json"
 
 
 router.get("", validateAdmin, getAllAgents)
+router.get("/:id", validateAdmin, getAgentById)
 
 
-router.get("/:id",validateAdmin ,async (req, res) => {
-    const getIdFromUser = req.params.id
+router.post("", validateAdmin, async (req, res) => {
     try {
-        const convToStr = await jsonToArr("./data/agents.json")
-        const fountId = convToStr.find((val)=>{return val.id == getIdFromUser})
-        if (!fountId) {
-            res.sendStatus(404)
-        } else {
-            console.log(fountId);
-            
-            res.json(fountId)
+        const { name, nickname } = req.body
+        const getAgents = await jsonToArr(PATH_AGENGTS_DB);
+        const newAgent = {
+            id: getAgents.reduce((a, b) => { return a + Number(b.id) },0),
+            name,
+            nickname,
+            reportCount: 0
         }
+        getAgents.push(newAgent)
+        await writeFile(PATH_AGENGTS_DB,getAgents)
+        res.json(newAgent)
     } catch (error) {
         console.error(error)
-        res.send("Error")
     }
-})
-router.post("", async (req, res) => {
-    
 })
 router.put("/:id", async (req, res) => {
     res.send()
