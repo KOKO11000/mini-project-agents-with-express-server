@@ -1,1 +1,14 @@
-[]
+[
+    {
+        "username" : "netanel ozeri",
+        "password" : 123456 
+    },
+    {
+        "username" : "moshe ben simon",
+        "password" : 654321 
+    },
+    {
+        "username" : "nissim verta ",
+        "password" : 1234 
+    }
+]
