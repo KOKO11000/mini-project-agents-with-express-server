@@ -12,3 +12,5 @@ function report() {
 export default {
     report
 }
+
+report()
