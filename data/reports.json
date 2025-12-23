@@ -1,1 +1,20 @@
-[]
+[
+    {
+        "id" : 1,
+        "date" : "2004",
+        "content" : "Henter here your report",
+        "agentId" : 1
+    },
+    {
+        "id" : 1,
+        "date" : "2014",
+        "content" : "Henter here your report",
+        "agentId" : 2
+    },
+    {
+        "id" : 1,
+        "date" : "2020",
+        "content" : "Henter here your report",
+        "agentId" : 3
+    }
+]

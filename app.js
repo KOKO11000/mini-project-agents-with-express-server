@@ -1,7 +1,7 @@
 import express from "express";
-import agentsCRUD from "./CRUD/agentsCRUD.js";
-import reportsCRUD from "./CRUD/reportsCRUD.js";
-import usersCRUD from "./CRUD/usersCRUD.js";
+import agentsRouter from "./Routers/agentsRouter.js";
+
+
 
 const app = express();
 const port = 3002;
@@ -12,7 +12,7 @@ app.get("/health",(req,res)=>{
 })
 
 // agent routes
-
+app.use("/agents",agentsRouter)
 // report routes 
 
 // users routes
