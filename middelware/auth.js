@@ -1,10 +1,9 @@
 import { jsonToArr } from "../fsFiles/fsFunc.js"
 
 export const validateData = async (req,res,next)=>{
-  
-
-    
-    
+    //Add Validation
+    console.log(req.heders);
+     
     next()
 }
 export const validateAdmin = async (req,res,next)=>{
